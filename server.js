@@ -1,13 +1,15 @@
-import { createServer } from "http"
+const express = require("express")
+const app = express()
+const port = 8080
 
-const server = createServer((req, res) => {
-  console.log("run request ...")
-  res.setHeader("Content-type", "text/html")
-  res.write("<h3>Hello world!</>")
-  res.write("<h2>From Nhi Nguyen</h2>")
-  res.end()
+app.get("/", (req, res) => {
+  res.send("Hello World!")
 })
 
-server.listen(3000, "localhost", () => {
-  console.log("Node.JS server is running on port: 3000")
+app.get("/about", (req, res) => {
+  res.send("About")
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
 })
